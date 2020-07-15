@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "---> Setting GO111MODULE on ..."
+GO111MODULE=on
+
+echo "---> Copying files ..."
+cp -a /tmp/src/. ./
+
+echo "---> Download module dependencies ..."
+scl enable go-toolset-1.13 'go mod download'
+echo "---> Building application ..."
+scl enable go-toolset-1.13 'go build -o /opt/app-root/gobinary main.go'
